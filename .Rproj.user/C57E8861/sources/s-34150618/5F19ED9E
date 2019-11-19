@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1574100677350.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3802519667",
+    "id" : "5F19ED9E",
+    "lastKnownWriteTime" : 1574182906,
+    "last_content_update" : 1574182906776,
+    "path" : "~/School/R Intro/Final Project/Test/Data_Import.Rmd",
+    "project_path" : "Data_Import.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "90,0",
+        "scrollLine" : "79",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
