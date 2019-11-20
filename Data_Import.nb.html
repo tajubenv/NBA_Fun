@@ -228,12 +228,18 @@ summary {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpICAjIGZvciBkYXRhIHdyYW5nbGluZ1xubGlicmFyeShqYW5pdG9yKSAgIyBmb3IgZGF0YSBjbGVhbmluZ1xubGlicmFyeShydmVzdCkgICAgICAjIGZvciB3ZWIgc2NyYXBpbmdcbmxpYnJhcnkoY29ycnBsb3QpICAgIyBjb3JyZWxhdGlvbiBwbG90c1xuYGBgIn0= -->
-<pre class="r"><code>library(tidyverse)  # for data wrangling
-library(janitor)  # for data cleaning
-library(rvest)      # for web scraping
-library(corrplot)   # correlation plots</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShsdWJyaWRhdGUpXG5cbmBgYCJ9 -->
+<pre class="r"><code>library(lubridate)
+</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYbHVicmlkYXRl4oCZXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0IGlzIG1hc2tlZCBmcm9tIOKAmHBhY2thZ2U6YmFzZeKAmTpcblxuICAgIGRhdGVcbiJ9 -->
+<pre><code>
+Attaching package: ‘lubridate’
+
+The following object is masked from ‘package:base’:
+
+    date</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -326,9 +332,75 @@ head(temp)</code></pre>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KHRlbXAsIGFlcyhwb3MsIHRzX3BlcmNlbnQpKSArIGdlb21fYm94cGxvdCgpXG5gYGAifQ== -->
+<pre class="r"><code>ggplot(temp, aes(pos, ts_percent)) + geom_boxplot()</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmFsdWUgPC0gc2NyYXBlX3BicChcIjIwMTkxMTE5MExBTFwiKVxuYGBgIn0= -->
+<pre class="r"><code>value &lt;- scrape_pbp(&quot;201911190LAL&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiU29tZSBzdHJpbmdzIGZhaWxlZCB0byBwYXJzZSwgb3IgYWxsIHN0cmluZ3MgYXJlIE5Bc1xuIn0= -->
+<pre><code>Some strings failed to parse, or all strings are NAs</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVhZCh2YWx1ZSlcbmBgYCJ9 -->
+<pre class="r"><code>head(value)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6OCwibnJvdyI6Nn0sInJkZiI6Ikg0c0lBQUFBQUFBQUE1VlUzVzdhTUJRMlArRW5FMTJsdnNDNTY2WXFFUWxNbzl5c3FHeElGZFhVdFp0Nk54a3dFT0hFa1dPNmNyZEgyYVBza2ZZRTNXemloQ1JxRVVPeXpqbmYrZnZPc2NtWDRYM0h2RGNSUWhWVXFaVlF4WkFxTXI3ZWZiSjZDRlhMMGlpaEttb3ErU2lEVHFUU2tPZFlucHAyMUIybjc3cDIrMld6M2MyWTdYNzNQR2Qybk5Tc25mYzd5cGx2VUdsYjdrN3RKS3E3VTd0WjlkMU9mUy9Ga2FyMDRRL2EvZzZWQlFiTjhRREdlRVY0OUJMUStyeWllTWw4REplZTJPd0Q5OVhLZCswTmJCamlCeThDWDdvamNLMVFBTVdiZFFoenpueHdZQzdnRFk0aUx4SXcyY0RZaGl2c2sraXR6b2RDL3B3VEFtTEoyUStaeXViZzZMalRvUTBqVEtrWFlPN3Q2YVhEaDdjMkRHYll6OUdhcllOVkhPa1dXTW5va1VjWGhLMGphMERKSXc1bWhDY1VUNjlzdUo2T0pLOU1yU1ZqSzRpV1RNUUZlN3ZXUGNWVVRoSDg5MGJ5bTMyZHJ0eTZuVEpPOXNNbnVXczgxSFZvanp5ejhwbWJhczR6MlBPYWZ1VVhsL0hUVGVWWXk1dmZzZngyRVV2OFN6L3kzRC9jQ05TdU5LR0dCcXQzbnA5d043S0QxRy9XbUF2QzB6aUMvU1R1NHdNSmtqc3psZU43TnZQVmtGQ0JJUXMxRnJLMVVKM3lsSnJ5c2RvSnJaYWE5bWRNdkZia1BxWHkyalgzQkRSbldHQjd6ckdxaTU0S0tYVVdDbzhGTXFtc1BtdEdJYm5FQzBBbG5JU3E2QmFLVDB2TFdrWnZ4RzNLZjNXNmtYemJTTER3Z25TVkZFOEkxY2FSbkhJN3BCMXliN2M0aVVhMllBSW5jZWFVMFFUWnpvT2UvZ0UwampiK3dRVUFBQT09In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Time"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Score"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Quarter"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Team"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Event"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Team_Score"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Delta Score"],"name":[7],"type":["chr"],"align":["left"]},{"label":["gametime"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"11:22.0","2":"0-2","3":"1","4":"LA Lakers","5":"A. Davis makes 2-pt layup from 1 ft (assist by L. James)","6":"LA Lakers-Score","7":"+2","8":"38","_rn_":"1"},{"1":"11:22.0","2":"0-3","3":"1","4":"LA Lakers","5":"A. Davis makes free throw 1 of 1","6":"LA Lakers-Score","7":"+1","8":"38","_rn_":"2"},{"1":"11:04.0","2":"2-3","3":"1","4":"Oklahoma City","5":"D. Gallinari makes 2-pt layup from 1 ft","6":"Oklahoma City-Score","7":"+2","8":"56","_rn_":"3"},{"1":"10:49.0","2":"4-3","3":"1","4":"Oklahoma City","5":"S. Adams makes 2-pt dunk from 2 ft (assist by S. Gilgeous-Alexander)","6":"Oklahoma City-Score","7":"+2","8":"71","_rn_":"4"},{"1":"10:31.0","2":"4-5","3":"1","4":"LA Lakers","5":"J. McGee makes 2-pt hook shot from 8 ft","6":"LA Lakers-Score","7":"+2","8":"89","_rn_":"5"},{"1":"9:39.0","2":"4-7","3":"1","4":"LA Lakers","5":"D. Green makes 2-pt layup from 1 ft (assist by L. James)","6":"LA Lakers-Score","7":"+2","8":"141","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10],"total":[8]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2NyYXBlX3BicCA8LSBmdW5jdGlvbihnYW1lX3VybCl7XG4gICNnYW1lX3VybCA8LSBcIjIwMTkxMTE5MExBTFwiXG4gIHVybCA8LSBwYXN0ZTAoXCJodHRwczovL3d3dy5iYXNrZXRiYWxsLXJlZmVyZW5jZS5jb20vYm94c2NvcmVzL3BicC9cIixnYW1lX3VybCxcIi5odG1sXCIpXG4gICAgcGJwX3RvdCA8LSB1cmwgJT4lIFxuICAgICAgcmVhZF9odG1sKCkgJT4lIFxuICAgICAgaHRtbF90YWJsZSgpICU+JSBcbiAgICAgIC5bWzFdXVxuICBjb2xuYW1lcyhwYnBfdG90KSA8LSBhcy5jaGFyYWN0ZXIodW5saXN0KHBicF90b3RbMSxdKSlcbiAgcGJwX3RvdCA9IHBicF90b3RbLTEsIF1cbiAgI2hlYWQocGJwX3RvdClcbiAgXG4gIGNvbG5hbWVzKHBicF90b3QpWzNdIDwtIHBhc3RlMChjb2xuYW1lcyhwYnBfdG90WzJdKSwgXCItU2NvcmVcIikgXG4gIGNvbG5hbWVzKHBicF90b3QpWzVdIDwtIHBhc3RlMChjb2xuYW1lcyhwYnBfdG90WzZdKSwgXCItU2NvcmVcIikgXG4gIGNvbG5hbWVzKHBicF90b3QpXG4gIFxuICAjIyBOZWVkIHRvIHNwbGl0IGJ5IFF1YXJ0ZXJcbiAgc2Vjb25kX2xpbSA8LSB3aGljaChzdHJfZGV0ZWN0KHBicF90b3QkYE9rbGFob21hIENpdHktU2NvcmVgLCBcIjJuZCBRXCIpKVxuICB0aGlyZF9saW0gPC0gd2hpY2goc3RyX2RldGVjdChwYnBfdG90JGBPa2xhaG9tYSBDaXR5LVNjb3JlYCwgXCIzcmQgUVwiKSlcbiAgZm91cnRoX2xpbSA8LSB3aGljaChzdHJfZGV0ZWN0KHBicF90b3QkYE9rbGFob21hIENpdHktU2NvcmVgLCBcIjR0aCBRXCIpKVxuICBcbiAgZmlyc3RfcSA8LSBwYnBfdG90WzE6KHNlY29uZF9saW0gLSAxKSxdICU+JSBtdXRhdGUoUXVhcnRlciA9IDEpXG4gIHNlY29uZF9xIDwtIHBicF90b3RbKHNlY29uZF9saW0gKyAxKToodGhpcmRfbGltIC0gMSksXSAlPiUgbXV0YXRlKFF1YXJ0ZXIgPSAyKVxuICB0aGlyZF9xIDwtIHBicF90b3RbKHRoaXJkX2xpbSArIDEpOihmb3VydGhfbGltIC0gMSksXSAlPiUgbXV0YXRlKFF1YXJ0ZXIgPSAzKVxuICBmb3VydGhfcSA8LSBwYnBfdG90Wyhmb3VydGhfbGltICsgMSk6bGVuZ3RoKHBicF90b3QpLF0gJT4lIG11dGF0ZShRdWFydGVyID0gNClcbiAgXG4gIHBicF9maXggPC0gcmJpbmQoZmlyc3RfcSwgc2Vjb25kX3EsIHRoaXJkX3EsIGZvdXJ0aF9xKVxuICAjaGVhZChwYnBfZml4KVxuICBcbiAgcGJwX2ZpbmFsIDwtIHBicF9maXggJT4lIGdhdGhlcihrZXkgPSBcIlRlYW1cIiwgdmFsdWUgPSBcIkV2ZW50XCIsIGMoXCJPa2xhaG9tYSBDaXR5XCIsIFwiTEEgTGFrZXJzXCIpKSAlPiUgXG4gICAgZmlsdGVyKCgoYE9rbGFob21hIENpdHktU2NvcmVgICE9IFwiXCIpICYgKFRlYW0gPT0gXCJPa2xhaG9tYSBDaXR5XCIpKSB8ICgoYExBIExha2Vycy1TY29yZWAgIT0gXCJcIikgJiAoVGVhbSA9PSBcIkxBIExha2Vyc1wiKSkpICU+JSBcbiAgICBnYXRoZXIoa2V5ID0gXCJUZWFtX1Njb3JlXCIsIHZhbHVlID0gXCJEZWx0YSBTY29yZVwiLCBjKFwiT2tsYWhvbWEgQ2l0eS1TY29yZVwiLFwiTEEgTGFrZXJzLVNjb3JlXCIpKSAlPiUgZmlsdGVyKGxlbmd0aChgRGVsdGEgU2NvcmVgKSA+IDMpICU+JVxuICAgIGZpbHRlcihgRGVsdGEgU2NvcmVgICE9ICcnKSAlPiUgXG4gICAgbXV0YXRlKGdhbWV0aW1lID0gUXVhcnRlcio3MjAgLSBhcy5udW1lcmljKG1zKFRpbWUpKSkgJT4lIGZpbHRlcihnYW1ldGltZSA+IDApICU+JWFycmFuZ2UoZ2FtZXRpbWUpXG5wYnBfZmluYWxcbn1cbmBgYCJ9 -->
+<pre class="r"><code>scrape_pbp &lt;- function(game_url){
+  #game_url &lt;- &quot;201911190LAL&quot;
+  url &lt;- paste0(&quot;https://www.basketball-reference.com/boxscores/pbp/&quot;,game_url,&quot;.html&quot;)
+    pbp_tot &lt;- url %&gt;% 
+      read_html() %&gt;% 
+      html_table() %&gt;% 
+      .[[1]]
+  colnames(pbp_tot) &lt;- as.character(unlist(pbp_tot[1,]))
+  pbp_tot = pbp_tot[-1, ]
+  #head(pbp_tot)
+  
+  colnames(pbp_tot)[3] &lt;- paste0(colnames(pbp_tot[2]), &quot;-Score&quot;) 
+  colnames(pbp_tot)[5] &lt;- paste0(colnames(pbp_tot[6]), &quot;-Score&quot;) 
+  colnames(pbp_tot)
+  
+  ## Need to split by Quarter
+  second_lim &lt;- which(str_detect(pbp_tot$`Oklahoma City-Score`, &quot;2nd Q&quot;))
+  third_lim &lt;- which(str_detect(pbp_tot$`Oklahoma City-Score`, &quot;3rd Q&quot;))
+  fourth_lim &lt;- which(str_detect(pbp_tot$`Oklahoma City-Score`, &quot;4th Q&quot;))
+  
+  first_q &lt;- pbp_tot[1:(second_lim - 1),] %&gt;% mutate(Quarter = 1)
+  second_q &lt;- pbp_tot[(second_lim + 1):(third_lim - 1),] %&gt;% mutate(Quarter = 2)
+  third_q &lt;- pbp_tot[(third_lim + 1):(fourth_lim - 1),] %&gt;% mutate(Quarter = 3)
+  fourth_q &lt;- pbp_tot[(fourth_lim + 1):length(pbp_tot),] %&gt;% mutate(Quarter = 4)
+  
+  pbp_fix &lt;- rbind(first_q, second_q, third_q, fourth_q)
+  #head(pbp_fix)
+  
+  pbp_final &lt;- pbp_fix %&gt;% gather(key = &quot;Team&quot;, value = &quot;Event&quot;, c(&quot;Oklahoma City&quot;, &quot;LA Lakers&quot;)) %&gt;% 
+    filter(((`Oklahoma City-Score` != &quot;&quot;) &amp; (Team == &quot;Oklahoma City&quot;)) | ((`LA Lakers-Score` != &quot;&quot;) &amp; (Team == &quot;LA Lakers&quot;))) %&gt;% 
+    gather(key = &quot;Team_Score&quot;, value = &quot;Delta Score&quot;, c(&quot;Oklahoma City-Score&quot;,&quot;LA Lakers-Score&quot;)) %&gt;% filter(length(`Delta Score`) &gt; 3) %&gt;%
+    filter(`Delta Score` != '') %&gt;% 
+    mutate(gametime = Quarter*720 - as.numeric(ms(Time))) %&gt;% filter(gametime &gt; 0) %&gt;%arrange(gametime)
+pbp_final
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkodGlkeXZlcnNlKSAgIyBmb3IgZGF0YSB3cmFuZ2xpbmcKbGlicmFyeShqYW5pdG9yKSAgIyBmb3IgZGF0YSBjbGVhbmluZwpsaWJyYXJ5KHJ2ZXN0KSAgICAgICMgZm9yIHdlYiBzY3JhcGluZwpsaWJyYXJ5KGNvcnJwbG90KSAgICMgY29ycmVsYXRpb24gcGxvdHMKYGBgCgpgYGB7cn0Kc2NyYXBlX3N0YXRzIDwtIGZ1bmN0aW9uKHNlYXNvbiA9IDIwMTcpewogICN0b3RhbCBzdGF0cwogICNzY3JhcGUKICB1cmwgPC0gcGFzdGUwKCJodHRwczovL3d3dy5iYXNrZXRiYWxsLXJlZmVyZW5jZS5jb20vbGVhZ3Vlcy9OQkFfIixzZWFzb24sIl90b3RhbHMuaHRtbCIpCiAgc3RhdHNfdG90IDwtIHVybCAlPiUgCiAgICByZWFkX2h0bWwoKSAlPiUgCiAgICBodG1sX3RhYmxlKCkgJT4lIAogICAgLltbMV1dCiAgCiAgI2NsZWFuCiAgcGxheWVyX3N0YXRzX3RvdCA8LSBzdGF0c190b3QgJT4lIAogICAgcmVtb3ZlX2VtcHR5KCJjb2xzIikgJT4lCiAgICBjbGVhbl9uYW1lcygpICU+JSAKICAgIGRwbHlyOjpmaWx0ZXIoIXBsYXllcj09IlBsYXllciIpICU+JQogICAgbXV0YXRlX2F0KHZhcnMoLWMocGxheWVyLHRtLHBvcykpLGFzLm51bWVyaWMpICU+JSAKICAgIG11dGF0ZV9hdCh2YXJzKC1jKHBsYXllcix0bSxwb3MpKSwgZnVucyhyZXBsYWNlKC4sIGlzLm5hKC4pLCAwKSkpICU+JSAKICAgIGFzX3RpYmJsZSgpICU+JSAKICAgIGdyb3VwX2J5KHBsYXllcikgJT4lIAogICAgc2xpY2UoMSkgJT4lIAogICAgdW5ncm91cCgpICU+JSAKICAgIHNlbGVjdCgtcmspCiAgCiAgI3BlciBtaW51dGUKICB1cmwgPC0gcGFzdGUwKCJodHRwczovL3d3dy5iYXNrZXRiYWxsLXJlZmVyZW5jZS5jb20vbGVhZ3Vlcy9OQkFfIixzZWFzb24sIl9wZXJfbWludXRlLmh0bWwiKQogIHN0YXRzX3BtIDwtIHVybCAlPiUgCiAgICByZWFkX2h0bWwoKSAlPiUgCiAgICBodG1sX3RhYmxlKCkgJT4lIAogICAgLltbMV1dCiAgCiAgcGxheWVyX3N0YXRzX3BtIDwtIHN0YXRzX3BtICU+JSAKICAgIHJlbW92ZV9lbXB0eSgiY29scyIpICU+JQogICAgY2xlYW5fbmFtZXMoKSAlPiUgCiAgICBkcGx5cjo6ZmlsdGVyKCFwbGF5ZXI9PSJQbGF5ZXIiKSAlPiUKICAgIG11dGF0ZV9hdCh2YXJzKC1jKHBsYXllcix0bSxwb3MpKSxhcy5udW1lcmljKSAlPiUgCiAgICBtdXRhdGVfYXQodmFycygtYyhwbGF5ZXIsdG0scG9zKSksIGZ1bnMocmVwbGFjZSguLCBpcy5uYSguKSwgMCkpKSAlPiUgCiAgICBhc190aWJibGUoKSAlPiUgCiAgICBncm91cF9ieShwbGF5ZXIpICU+JSAKICAgIHNsaWNlKDEpICU+JSAKICAgIHVuZ3JvdXAoKSAlPiUgCiAgICByZW5hbWVfYXQodmFycyg5OjI5KSxmdW5zKHBhc3RlMCguLCJfcG0iKSkpICU+JSAKICAgIHNlbGVjdCgtcmspCiAgCiAgI2FkdmFuY2VkCiAgdXJsIDwtIHBhc3RlMCgiaHR0cHM6Ly93d3cuYmFza2V0YmFsbC1yZWZlcmVuY2UuY29tL2xlYWd1ZXMvTkJBXyIsc2Vhc29uLCJfYWR2YW5jZWQuaHRtbCIpCiAgc3RhdHNfYWR2IDwtIHVybCAlPiUgCiAgICByZWFkX2h0bWwoKSAlPiUgCiAgICBodG1sX3RhYmxlKCkgJT4lIAogICAgLltbMV1dCiAgCiAgcGxheWVyX3N0YXRzX2FkdiA8LSBzdGF0c19hZHYgJT4lIAogICAgcmVtb3ZlX2VtcHR5KCJjb2xzIikgJT4lCiAgICBjbGVhbl9uYW1lcygpICU+JSAKICAgIGRwbHlyOjpmaWx0ZXIoIXBsYXllcj09IlBsYXllciIpICU+JQogICAgbXV0YXRlX2F0KHZhcnMoLWMocGxheWVyLHRtLHBvcykpLGFzLm51bWVyaWMpICU+JSAKICAgIG11dGF0ZV9hdCh2YXJzKC1jKHBsYXllcix0bSxwb3MpKSwgZnVucyhyZXBsYWNlKC4sIGlzLm5hKC4pLCAwKSkpICU+JSAKICAgIGFzX3RpYmJsZSgpICU+JSAKICAgIGdyb3VwX2J5KHBsYXllcikgJT4lIAogICAgc2xpY2UoMSkgJT4lIAogICAgdW5ncm91cCgpICU+JSAKICAgIHNlbGVjdCgtcmspCiAgCiAgcGxheWVyX3N0YXRzIDwtIGZ1bGxfam9pbihwbGF5ZXJfc3RhdHNfdG90LHBsYXllcl9zdGF0c19wbSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJ5ID0gYygicGxheWVyIiwgInBvcyIsICJhZ2UiLCAidG0iLCAiZyIsICJncyIsICJtcCIpKSAlPiUgCiAgICBmdWxsX2pvaW4ocGxheWVyX3N0YXRzX2FkdiwKICAgICAgICAgICAgICBieSA9IGMoInBsYXllciIsICJwb3MiLCAiYWdlIiwgInRtIiwgImciLCAibXAiKSkKICByZXR1cm4ocGxheWVyX3N0YXRzKQp9CgoKYGBgCgpgYGB7cn0KdGVtcCA8LSBzY3JhcGVfc3RhdHMoc2Vhc29uID0gMjAxOCkKaGVhZCh0ZW1wKQpgYGAKCmBgYHtyfQoKYGBg</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkodGlkeXZlcnNlKSAgIyBmb3IgZGF0YSB3cmFuZ2xpbmcKbGlicmFyeShqYW5pdG9yKSAgIyBmb3IgZGF0YSBjbGVhbmluZwpsaWJyYXJ5KHJ2ZXN0KSAgICAgICMgZm9yIHdlYiBzY3JhcGluZwpsaWJyYXJ5KGNvcnJwbG90KSAgICMgY29ycmVsYXRpb24gcGxvdHMKbGlicmFyeShsdWJyaWRhdGUpCmBgYAoKYGBge3J9CnNjcmFwZV9zdGF0cyA8LSBmdW5jdGlvbihzZWFzb24gPSAyMDE3KXsKICAjdG90YWwgc3RhdHMKICAjc2NyYXBlCiAgdXJsIDwtIHBhc3RlMCgiaHR0cHM6Ly93d3cuYmFza2V0YmFsbC1yZWZlcmVuY2UuY29tL2xlYWd1ZXMvTkJBXyIsc2Vhc29uLCJfdG90YWxzLmh0bWwiKQogIHN0YXRzX3RvdCA8LSB1cmwgJT4lIAogICAgcmVhZF9odG1sKCkgJT4lIAogICAgaHRtbF90YWJsZSgpICU+JSAKICAgIC5bWzFdXQogIAogICNjbGVhbgogIHBsYXllcl9zdGF0c190b3QgPC0gc3RhdHNfdG90ICU+JSAKICAgIHJlbW92ZV9lbXB0eSgiY29scyIpICU+JQogICAgY2xlYW5fbmFtZXMoKSAlPiUgCiAgICBkcGx5cjo6ZmlsdGVyKCFwbGF5ZXI9PSJQbGF5ZXIiKSAlPiUKICAgIG11dGF0ZV9hdCh2YXJzKC1jKHBsYXllcix0bSxwb3MpKSxhcy5udW1lcmljKSAlPiUgCiAgICBtdXRhdGVfYXQodmFycygtYyhwbGF5ZXIsdG0scG9zKSksIGZ1bnMocmVwbGFjZSguLCBpcy5uYSguKSwgMCkpKSAlPiUgCiAgICBhc190aWJibGUoKSAlPiUgCiAgICBncm91cF9ieShwbGF5ZXIpICU+JSAKICAgIHNsaWNlKDEpICU+JSAKICAgIHVuZ3JvdXAoKSAlPiUgCiAgICBzZWxlY3QoLXJrKQogIAogICNwZXIgbWludXRlCiAgdXJsIDwtIHBhc3RlMCgiaHR0cHM6Ly93d3cuYmFza2V0YmFsbC1yZWZlcmVuY2UuY29tL2xlYWd1ZXMvTkJBXyIsc2Vhc29uLCJfcGVyX21pbnV0ZS5odG1sIikKICBzdGF0c19wbSA8LSB1cmwgJT4lIAogICAgcmVhZF9odG1sKCkgJT4lIAogICAgaHRtbF90YWJsZSgpICU+JSAKICAgIC5bWzFdXQogIAogIHBsYXllcl9zdGF0c19wbSA8LSBzdGF0c19wbSAlPiUgCiAgICByZW1vdmVfZW1wdHkoImNvbHMiKSAlPiUKICAgIGNsZWFuX25hbWVzKCkgJT4lIAogICAgZHBseXI6OmZpbHRlcighcGxheWVyPT0iUGxheWVyIikgJT4lCiAgICBtdXRhdGVfYXQodmFycygtYyhwbGF5ZXIsdG0scG9zKSksYXMubnVtZXJpYykgJT4lIAogICAgbXV0YXRlX2F0KHZhcnMoLWMocGxheWVyLHRtLHBvcykpLCBmdW5zKHJlcGxhY2UoLiwgaXMubmEoLiksIDApKSkgJT4lIAogICAgYXNfdGliYmxlKCkgJT4lIAogICAgZ3JvdXBfYnkocGxheWVyKSAlPiUgCiAgICBzbGljZSgxKSAlPiUgCiAgICB1bmdyb3VwKCkgJT4lIAogICAgcmVuYW1lX2F0KHZhcnMoOToyOSksZnVucyhwYXN0ZTAoLiwiX3BtIikpKSAlPiUgCiAgICBzZWxlY3QoLXJrKQogIAogICNhZHZhbmNlZAogIHVybCA8LSBwYXN0ZTAoImh0dHBzOi8vd3d3LmJhc2tldGJhbGwtcmVmZXJlbmNlLmNvbS9sZWFndWVzL05CQV8iLHNlYXNvbiwiX2FkdmFuY2VkLmh0bWwiKQogIHN0YXRzX2FkdiA8LSB1cmwgJT4lIAogICAgcmVhZF9odG1sKCkgJT4lIAogICAgaHRtbF90YWJsZSgpICU+JSAKICAgIC5bWzFdXQogIAogIHBsYXllcl9zdGF0c19hZHYgPC0gc3RhdHNfYWR2ICU+JSAKICAgIHJlbW92ZV9lbXB0eSgiY29scyIpICU+JQogICAgY2xlYW5fbmFtZXMoKSAlPiUgCiAgICBkcGx5cjo6ZmlsdGVyKCFwbGF5ZXI9PSJQbGF5ZXIiKSAlPiUKICAgIG11dGF0ZV9hdCh2YXJzKC1jKHBsYXllcix0bSxwb3MpKSxhcy5udW1lcmljKSAlPiUgCiAgICBtdXRhdGVfYXQodmFycygtYyhwbGF5ZXIsdG0scG9zKSksIGZ1bnMocmVwbGFjZSguLCBpcy5uYSguKSwgMCkpKSAlPiUgCiAgICBhc190aWJibGUoKSAlPiUgCiAgICBncm91cF9ieShwbGF5ZXIpICU+JSAKICAgIHNsaWNlKDEpICU+JSAKICAgIHVuZ3JvdXAoKSAlPiUgCiAgICBzZWxlY3QoLXJrKQogIAogIHBsYXllcl9zdGF0cyA8LSBmdWxsX2pvaW4ocGxheWVyX3N0YXRzX3RvdCxwbGF5ZXJfc3RhdHNfcG0sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBieSA9IGMoInBsYXllciIsICJwb3MiLCAiYWdlIiwgInRtIiwgImciLCAiZ3MiLCAibXAiKSkgJT4lIAogICAgZnVsbF9qb2luKHBsYXllcl9zdGF0c19hZHYsCiAgICAgICAgICAgICAgYnkgPSBjKCJwbGF5ZXIiLCAicG9zIiwgImFnZSIsICJ0bSIsICJnIiwgIm1wIikpCiAgcmV0dXJuKHBsYXllcl9zdGF0cykKfQoKCmBgYAoKYGBge3J9CnRlbXAgPC0gc2NyYXBlX3N0YXRzKHNlYXNvbiA9IDIwMTgpCmhlYWQodGVtcCkKYGBgCgpgYGB7cn0KZ2dwbG90KHRlbXAsIGFlcyhwb3MsIHRzX3BlcmNlbnQpKSArIGdlb21fYm94cGxvdCgpCmBgYAoKCmBgYHtyIHBicH0KdmFsdWUgPC0gc2NyYXBlX3BicCgiMjAxOTExMTkwTEFMIikKaGVhZCh2YWx1ZSkKYGBgCgoKYGBge3IgdHJpYWxfcGJwfQpzY3JhcGVfcGJwIDwtIGZ1bmN0aW9uKGdhbWVfdXJsKXsKICAjZ2FtZV91cmwgPC0gIjIwMTkxMTE5MExBTCIKICB1cmwgPC0gcGFzdGUwKCJodHRwczovL3d3dy5iYXNrZXRiYWxsLXJlZmVyZW5jZS5jb20vYm94c2NvcmVzL3BicC8iLGdhbWVfdXJsLCIuaHRtbCIpCiAgICBwYnBfdG90IDwtIHVybCAlPiUgCiAgICAgIHJlYWRfaHRtbCgpICU+JSAKICAgICAgaHRtbF90YWJsZSgpICU+JSAKICAgICAgLltbMV1dCiAgY29sbmFtZXMocGJwX3RvdCkgPC0gYXMuY2hhcmFjdGVyKHVubGlzdChwYnBfdG90WzEsXSkpCiAgcGJwX3RvdCA9IHBicF90b3RbLTEsIF0KICAjaGVhZChwYnBfdG90KQogIAogIGNvbG5hbWVzKHBicF90b3QpWzNdIDwtIHBhc3RlMChjb2xuYW1lcyhwYnBfdG90WzJdKSwgIi1TY29yZSIpIAogIGNvbG5hbWVzKHBicF90b3QpWzVdIDwtIHBhc3RlMChjb2xuYW1lcyhwYnBfdG90WzZdKSwgIi1TY29yZSIpIAogIGNvbG5hbWVzKHBicF90b3QpCiAgCiAgIyMgTmVlZCB0byBzcGxpdCBieSBRdWFydGVyCiAgc2Vjb25kX2xpbSA8LSB3aGljaChzdHJfZGV0ZWN0KHBicF90b3QkYE9rbGFob21hIENpdHktU2NvcmVgLCAiMm5kIFEiKSkKICB0aGlyZF9saW0gPC0gd2hpY2goc3RyX2RldGVjdChwYnBfdG90JGBPa2xhaG9tYSBDaXR5LVNjb3JlYCwgIjNyZCBRIikpCiAgZm91cnRoX2xpbSA8LSB3aGljaChzdHJfZGV0ZWN0KHBicF90b3QkYE9rbGFob21hIENpdHktU2NvcmVgLCAiNHRoIFEiKSkKICAKICBmaXJzdF9xIDwtIHBicF90b3RbMTooc2Vjb25kX2xpbSAtIDEpLF0gJT4lIG11dGF0ZShRdWFydGVyID0gMSkKICBzZWNvbmRfcSA8LSBwYnBfdG90WyhzZWNvbmRfbGltICsgMSk6KHRoaXJkX2xpbSAtIDEpLF0gJT4lIG11dGF0ZShRdWFydGVyID0gMikKICB0aGlyZF9xIDwtIHBicF90b3RbKHRoaXJkX2xpbSArIDEpOihmb3VydGhfbGltIC0gMSksXSAlPiUgbXV0YXRlKFF1YXJ0ZXIgPSAzKQogIGZvdXJ0aF9xIDwtIHBicF90b3RbKGZvdXJ0aF9saW0gKyAxKTpsZW5ndGgocGJwX3RvdCksXSAlPiUgbXV0YXRlKFF1YXJ0ZXIgPSA0KQogIAogIHBicF9maXggPC0gcmJpbmQoZmlyc3RfcSwgc2Vjb25kX3EsIHRoaXJkX3EsIGZvdXJ0aF9xKQogICNoZWFkKHBicF9maXgpCiAgCiAgcGJwX2ZpbmFsIDwtIHBicF9maXggJT4lIGdhdGhlcihrZXkgPSAiVGVhbSIsIHZhbHVlID0gIkV2ZW50IiwgYygiT2tsYWhvbWEgQ2l0eSIsICJMQSBMYWtlcnMiKSkgJT4lIAogICAgZmlsdGVyKCgoYE9rbGFob21hIENpdHktU2NvcmVgICE9ICIiKSAmIChUZWFtID09ICJPa2xhaG9tYSBDaXR5IikpIHwgKChgTEEgTGFrZXJzLVNjb3JlYCAhPSAiIikgJiAoVGVhbSA9PSAiTEEgTGFrZXJzIikpKSAlPiUgCiAgICBnYXRoZXIoa2V5ID0gIlRlYW1fU2NvcmUiLCB2YWx1ZSA9ICJEZWx0YSBTY29yZSIsIGMoIk9rbGFob21hIENpdHktU2NvcmUiLCJMQSBMYWtlcnMtU2NvcmUiKSkgJT4lIGZpbHRlcihsZW5ndGgoYERlbHRhIFNjb3JlYCkgPiAzKSAlPiUKICAgIGZpbHRlcihgRGVsdGEgU2NvcmVgICE9ICcnKSAlPiUgCiAgICBtdXRhdGUoZ2FtZXRpbWUgPSBRdWFydGVyKjcyMCAtIGFzLm51bWVyaWMobXMoVGltZSkpKSAlPiUgZmlsdGVyKGdhbWV0aW1lID4gMCkgJT4lYXJyYW5nZShnYW1ldGltZSkKcGJwX2ZpbmFsCn0KYGBgCgoKCgoK</div>
 
 
 

@@ -8,6 +8,7 @@ library(tidyverse)  # for data wrangling
 library(janitor)  # for data cleaning
 library(rvest)      # for web scraping
 library(corrplot)   # correlation plots
+library(lubridate)
 ```
 
 ```{r}
@@ -88,5 +89,55 @@ head(temp)
 ```
 
 ```{r}
-
+ggplot(temp, aes(pos, ts_percent)) + geom_boxplot()
 ```
+
+
+```{r pbp}
+value <- scrape_pbp("201911190LAL")
+head(value)
+```
+
+
+```{r trial_pbp}
+scrape_pbp <- function(game_url){
+  #game_url <- "201911190LAL"
+  url <- paste0("https://www.basketball-reference.com/boxscores/pbp/",game_url,".html")
+    pbp_tot <- url %>% 
+      read_html() %>% 
+      html_table() %>% 
+      .[[1]]
+  colnames(pbp_tot) <- as.character(unlist(pbp_tot[1,]))
+  pbp_tot = pbp_tot[-1, ]
+  #head(pbp_tot)
+  
+  colnames(pbp_tot)[3] <- paste0(colnames(pbp_tot[2]), "-Score") 
+  colnames(pbp_tot)[5] <- paste0(colnames(pbp_tot[6]), "-Score") 
+  colnames(pbp_tot)
+  
+  ## Need to split by Quarter
+  second_lim <- which(str_detect(pbp_tot$`Oklahoma City-Score`, "2nd Q"))
+  third_lim <- which(str_detect(pbp_tot$`Oklahoma City-Score`, "3rd Q"))
+  fourth_lim <- which(str_detect(pbp_tot$`Oklahoma City-Score`, "4th Q"))
+  
+  first_q <- pbp_tot[1:(second_lim - 1),] %>% mutate(Quarter = 1)
+  second_q <- pbp_tot[(second_lim + 1):(third_lim - 1),] %>% mutate(Quarter = 2)
+  third_q <- pbp_tot[(third_lim + 1):(fourth_lim - 1),] %>% mutate(Quarter = 3)
+  fourth_q <- pbp_tot[(fourth_lim + 1):length(pbp_tot),] %>% mutate(Quarter = 4)
+  
+  pbp_fix <- rbind(first_q, second_q, third_q, fourth_q)
+  #head(pbp_fix)
+  
+  pbp_final <- pbp_fix %>% gather(key = "Team", value = "Event", c("Oklahoma City", "LA Lakers")) %>% 
+    filter(((`Oklahoma City-Score` != "") & (Team == "Oklahoma City")) | ((`LA Lakers-Score` != "") & (Team == "LA Lakers"))) %>% 
+    gather(key = "Team_Score", value = "Delta Score", c("Oklahoma City-Score","LA Lakers-Score")) %>% filter(length(`Delta Score`) > 3) %>%
+    filter(`Delta Score` != '') %>% 
+    mutate(gametime = Quarter*720 - as.numeric(ms(Time))) %>% filter(gametime > 0) %>%arrange(gametime)
+pbp_final
+}
+```
+
+
+
+
+
