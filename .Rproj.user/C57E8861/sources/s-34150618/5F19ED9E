@@ -7,14 +7,14 @@
     "folds" : "",
     "hash" : "0",
     "id" : "5F19ED9E",
-    "lastKnownWriteTime" : 1574276786,
-    "last_content_update" : 1574276786152,
+    "lastKnownWriteTime" : 1574438906,
+    "last_content_update" : 1574438906017,
     "path" : "~/School/R Intro/Final Project/Test/Data_Import.Rmd",
     "project_path" : "Data_Import.Rmd",
     "properties" : {
         "chunk_output_type" : "inline",
-        "cursorPosition" : "96,35",
-        "scrollLine" : "89",
+        "cursorPosition" : "162,65",
+        "scrollLine" : "148",
         "tempName" : "Untitled1"
     },
     "relative_order" : 1,
